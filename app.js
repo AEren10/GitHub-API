@@ -1,9 +1,12 @@
 const githubname = document.getElementById("githubname");
 const searchbutton = document.getElementById("search-btn");
+const lastuser = document.getElementById("last-users");
 
 const ui = new UI();
+const str = new stroge();
 
 searchbutton.addEventListener("click",search);
+
 
 const url = `https://api.github.com/users/`;
 
@@ -37,6 +40,7 @@ function search(e){
                 ui.showUI(response.user)
                 ui.showalert("success","Kullanıcı Bulundu");
                 ui.showrepo(response.repo);
+                str.addToStroge(username);
             }
            
         });
@@ -44,7 +48,19 @@ function search(e){
       
     }   
     
-    
+   
     ui.clear();
     e.preventDefault();
+}
+
+function removeToStroge(){
+
+    if(confirm("Emin Misiniz?")){
+        
+        while(lastuser.firstElementChild != null){
+            lastuser.firstElementChild.remove();
+        }
+        
+    }
+
 }

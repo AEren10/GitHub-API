@@ -54,22 +54,23 @@ class UI{
     }
     showrepo(repos){
         this.repoPoint.innerHTML = `` ;
-        repos.forEach(repo => {
+       
+        for(let index = 0; index < 5; index++) {
             this.repoPoint.innerHTML += `
             
                     <div class="mb-2 card-body">
                     <div class="row">
                         <div class="col-md-2">
                          
-                        <a href="${repo.html_url}" target = "_blank" id = "repoName">${repo.name}</a>
+                        <a href="${repos[index].html_url}" target = "_blank" id = "repoName">${repos[index].name}</a>
                         </div>
                         <div class="col-md-6">
                             <button class="btn btn-secondary">
-                                Starlar  <span class="badge badge-light" id="repoStar">${repo.stargazers_count}</span>
+                                Starlar  <span class="badge badge-light" id="repoStar">${repos[index].stargazers_count}</span>
                             </button>
 
                             <button class="btn btn-info">
-                                Forklar  <span class="badge badge-light" id ="repoFork">${repo.forks_count}</span>
+                                Forklar  <span class="badge badge-light" id ="repoFork">${repos[index].forks_count}</span>
                             </button>
                     
                         </div>
@@ -77,7 +78,7 @@ class UI{
                      </div>
             
             `;
-        });
+        }
     }
     showalert(type,message){
     
